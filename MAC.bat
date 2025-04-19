@@ -1,10 +1,10 @@
  @ECHO OFF
-title MAC SPOOF NELIX
+title SPOOF RETRAC NELIX
 mode con: cols=28 lines=10
  SETLOCAL ENABLEDELAYEDEXPANSION
  SETLOCAL ENABLEEXTENSIONS
  color a
- echo NELIX MAC SPOOF
+ echo NELIX SPOOF RETRAC
  echo Loading...
 
  ::Generate and implement a random MAC address
@@ -21,7 +21,7 @@ mode con: cols=28 lines=10
  REG QUERY HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\%%b%%a >NUL 2>NUL && REG ADD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}\%%b%%a /v PnPCapabilities /t REG_DWORD /d 24 /f >NUL 2>NUL
  )
  )
- echo Changing mac...
+ echo Changing...
  ::Reset NIC adapters so the new MAC address is implemented and the power saving mode is disabled.
  FOR /F "tokens=2 delims=, skip=2" %%a IN ('"wmic nic where (netconnectionid like '%%') get netconnectionid,netconnectionstatus /format:csv"') DO (
  netsh interface set interface name="%%a" disable >NUL 2>NUL
